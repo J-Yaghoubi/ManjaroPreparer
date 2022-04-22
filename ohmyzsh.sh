@@ -1,7 +1,11 @@
-#! /usr/bin/zsh
+#! /bin/bash
 
 # install ohmyzsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# enable oh-my-zsh
+/usr/bin/zsh
+source $ZSH/oh-my-zsh.sh
 
 # clone zsh-autocomplete
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
