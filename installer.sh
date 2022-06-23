@@ -1,47 +1,62 @@
 #! /bin/bash
 
-# Update repository:
+# Repositories -----------------------------------------------------------------------------
+
+## pacman
 sudo pacman -Sqyu
 
-# Install aur package manager
+## snapcraft
+sudo pacman -S snapd
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+
+# aur
 sudo pacman -Sq yay pamac
 
-# Base system applications
+
+# General Solutions ------------------------------------------------------------------------
+
+## daily assistances
 sudo pacman -Sq git screenfetch zsh gparted net-tools copyq htop appimagelauncher latte-dock
 yay -Sq nerdfetch pantheon-terminal translate-Sqhell http gitflow stacer powerline-fonts-git 
 
-# Icon set
+## icon set
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.local/share/icons" sh
 
-# Programming language
+## Office softwares
+sudo pacman -Sq libreoffice-fresh
 
-## python
-sudo pacman -Sq python ipython python-pip virtualbox
-
-### base python modules
-sudo pip install -U pip
-sudo pip install -U django flask sanic gunicorn pyfiglet shecan
-
-## node.js
-sudo pacman -Sq nodejs npm
-
-# ClamAV antivirus
-sudo pacman -Sq clamav clamtk
+## Multimedia 
+sudo pacman -Sq clementine vlc elisa simplescreenrecorder
 
 # Graphic tools
 sudo pacman -Sq krita gimp
 yay -Sq lorien-bin rnote
 
-# Shecan dns :
-sudo shecan update
-sudo shecan list
-sudo shecan set
-sudo shecan verify
 
-# Sochial applications
-sudo pacman -Sq telegram-desktop discord
+# Social networks --------------------------------------------------------------------------
 
-# Database
+## Telegram
+sudo snap install telegram-desktop
+
+
+# Programing utilities ---------------------------------------------------------------------
+
+## python
+sudo pacman -Sq python ipython python-pip virtualbox
+
+## python modules
+sudo pip install -U pip
+sudo pip install -U django flask sanic gunicorn pyfiglet shecan
+
+## IDE: VS-Code
+sudo snap install code --classic
+
+## IDE: Kate
+sudo pacman -Sq kate code
+
+
+# Databases --------------------------------------------------------------------------------
 
 ## postgresql
 sudo pacman -Sq postgresql pgadmin4
@@ -62,34 +77,49 @@ sudo systemctl enable redis
 ## sqlite
 sudo pacman -Sq sqlite
 
-# Browsers
+
+# Internet ---------------------------------------------------------------------------------
+
+## Shecan dns :
+sudo shecan update
+sudo shecan list
+sudo shecan set
+sudo shecan verify
+
+## VPN
+yay -Sq cloudflare-warp-bin
+yay -Sq windscribe-v2-bin
+
+## Browsers
 sudo pacman -Sq firefox links torbrowser-launcher
 yay -Sq google-chrome
 sudo pamac install brave-browser
 
-# Office softwares
-sudo pacman -Sq libreoffice-fresh
-
-# Multimedia 
-sudo pacman -Sq clementine vlc elisa simplescreenrecorder
-
-# Development IDE
-sudo pacman -Sq kate code
-
-# Virtualization
-sudo pacman -Sq docker docker-compose
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo pacman -Sq virtualbox linux515-virtualbox-host-modules
-sudo vboxreload
-
-# Server tools:
+## Server tools
 sudo pacman -Sq remmina
 yay -Sq wrk
 
-# Api client
+## Api client
 yay -Sq insomnia
 
-# VPN
-yay -Sq cloudflare-warp-bin
-yay -Sq windscribe-v2-bin
+
+# Security --------------------------------------------------------------------------------
+
+# ClamAV antivirus
+sudo pacman -Sq clamav clamtk
+
+
+# Virtualization --------------------------------------------------------------------------
+
+# docker
+sudo pacman -Sq docker docker-compose
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# virtualbox
+sudo pacman -Sq virtualbox linux515-virtualbox-host-modules
+sudo vboxreload
+
+
+
+
