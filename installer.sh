@@ -26,10 +26,10 @@ wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.local/shar
 ## Office softwares
 sudo pacman -Sq libreoffice-fresh
 
-## Multimedia 
+## multimedia 
 sudo pacman -Sq clementine vlc elisa simplescreenrecorder
 
-# Graphic tools
+# graphic tools
 sudo pacman -Sq krita gimp
 yay -Sq lorien-bin rnote
 
@@ -108,6 +108,10 @@ yay -Sq insomnia
 # ClamAV antivirus
 sudo pacman -Sq clamav clamtk
 
+# Uncomplicated FireWall
+sudo pamac install ufw 
+sudo pamac install gufw 
+
 
 # Virtualization --------------------------------------------------------------------------
 
@@ -119,6 +123,19 @@ sudo systemctl enable docker
 # virtualbox
 sudo pacman -Sq virtualbox linux515-virtualbox-host-modules
 sudo vboxreload
+
+# vmware-workstation
+sudo pacman -S fuse2 gtkmm linux-headers pcsclite libcanberra
+yay -S --noconfirm --needed ncurses5-compat-libs
+yay -S --noconfirm --needed vmware-workstation
+sudo modprobe -a vmw_vmci vmmon
+
+sudo systemctl enable vmware-networks.service  vmware-usbarbitrator.service vmware-hostd.service
+sudo systemctl start vmware-networks.service  vmware-usbarbitrator.service vmware-hostd.service
+
+sudo pacman -S $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk '{print $1"-headers"}' ORS=' ')
+sudo vmware-modconfig --console --install-all
+
 
 
 
