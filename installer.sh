@@ -77,6 +77,15 @@ sudo systemctl enable redis
 ## sqlite
 sudo pacman -Sq sqlite
 
+# Network ---------------------------------------------------------------------------------
+
+## Wireshark: install and enable capture packets
+sudo pacman -S wireshark-qt
+sudo chmod +x /usr/bin/dumpcap
+
+##
+sudo pacman -S nmap
+pamac install ettercap-gtk
 
 # Internet ---------------------------------------------------------------------------------
 
