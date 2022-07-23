@@ -43,7 +43,7 @@ sudo snap install telegram-desktop
 # Programing utilities ---------------------------------------------------------------------
 
 ## python
-sudo pacman -Sq python ipython python-pip virtualbox
+sudo pacman -Sq python ipython python-pip
 
 ## python modules
 sudo pip install -U pip
@@ -111,6 +111,8 @@ sudo pacman -Sq clamav clamtk
 # Uncomplicated FireWall
 sudo pamac install ufw 
 sudo pamac install gufw 
+sudo ufw enable
+sudo systemctl enable ufw
 
 
 # Virtualization --------------------------------------------------------------------------
