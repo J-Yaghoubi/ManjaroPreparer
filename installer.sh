@@ -87,6 +87,13 @@ sudo chmod +x /usr/bin/dumpcap
 sudo pacman -S nmap
 pamac install ettercap-gtk
 
+# Uncomplicated FireWall: install, enable, add to startup
+sudo pamac install ufw 
+sudo pamac install gufw 
+sudo ufw enable
+sudo systemctl enable ufw
+
+
 # Internet ---------------------------------------------------------------------------------
 
 ## Shecan dns :
@@ -96,8 +103,8 @@ sudo shecan set
 sudo shecan verify
 
 ## VPN
-yay -Sq cloudflare-warp-bin
-yay -Sq windscribe-v2-bin
+sudo pacman -S openvpn dialog python-pip python-setuptools
+sudo pip3 install protonvpn-cli
 
 ## Browsers
 sudo pacman -Sq firefox links torbrowser-launcher
@@ -110,18 +117,6 @@ yay -Sq wrk
 
 ## Api client
 yay -Sq insomnia
-
-
-# Security --------------------------------------------------------------------------------
-
-# ClamAV antivirus
-sudo pacman -Sq clamav clamtk
-
-# Uncomplicated FireWall
-sudo pamac install ufw 
-sudo pamac install gufw 
-sudo ufw enable
-sudo systemctl enable ufw
 
 
 # Virtualization --------------------------------------------------------------------------
