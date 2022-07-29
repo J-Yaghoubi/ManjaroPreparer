@@ -53,6 +53,7 @@ sudo pacman -Syu zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+chsh -s $(which zsh)
 
 ## Add custom text to head of konsole
 yay -S figlet
@@ -79,6 +80,7 @@ sudo pacman -Sq kate code
 yay -S git
 yay -S gitflow
 
+
 # Databases --------------------------------------------------------------------------------
 
 ## postgresql
@@ -99,6 +101,7 @@ sudo systemctl enable redis
 
 ## sqlite
 sudo pacman -Sq sqlite
+
 
 # Network ---------------------------------------------------------------------------------
 
@@ -146,6 +149,3 @@ yay -Sq insomnia
 sudo pacman -Sq docker docker-compose
 sudo systemctl start docker
 sudo systemctl enable docker
-
-
-
