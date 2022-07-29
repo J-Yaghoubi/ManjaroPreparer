@@ -17,8 +17,8 @@ sudo pacman -Sq yay pamac
 # General Solutions ------------------------------------------------------------------------
 
 ## daily assistances
-sudo pacman -Sq git screenfetch zsh gparted net-tools copyq htop appimagelauncher latte-dock
-yay -Sq nerdfetch pantheon-terminal translate-Sqhell http gitflow stacer powerline-fonts-git 
+sudo pacman -Sq screenfetch gparted net-tools copyq htop appimagelauncher latte-dock
+yay -Sq translate-Sqhell http stacer powerline-fonts-git 
 
 ## icon set
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.local/share/icons" sh
@@ -33,11 +33,31 @@ sudo pacman -Sq clementine vlc elisa simplescreenrecorder
 sudo pacman -Sq krita gimp
 yay -Sq lorien-bin rnote
 
+# Enable TRIM for SSD
+sudo systemctl enable fstrim.timer
+sudo systemctl start fstrim.timer
+
 
 # Social networks --------------------------------------------------------------------------
 
 ## Telegram
 sudo snap install telegram-desktop
+
+
+# Konsole customization --------------------------------------------------------------------
+
+## zsh
+sudo pacman -Syu zsh
+
+## Oh My ZSH and its plugins
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+## Add custom text to head of konsole
+yay -S figlet
+yay -S lolcat
+echo figlet '<Your prefared text>' | lolcat >> ~/.zshrc
 
 
 # Programing utilities ---------------------------------------------------------------------
@@ -55,6 +75,9 @@ sudo snap install code --classic
 ## IDE: Kate
 sudo pacman -Sq kate code
 
+## Version control
+yay -S git
+yay -S gitflow
 
 # Databases --------------------------------------------------------------------------------
 
@@ -83,9 +106,8 @@ sudo pacman -Sq sqlite
 sudo pacman -S wireshark-qt
 sudo chmod +x /usr/bin/dumpcap
 
-##
+## Nmap
 sudo pacman -S nmap
-pamac install ettercap-gtk
 
 # Uncomplicated FireWall: install, enable, add to startup
 sudo pamac install ufw 
@@ -107,9 +129,8 @@ sudo pacman -S openvpn dialog python-pip python-setuptools
 sudo pip3 install protonvpn-cli
 
 ## Browsers
-sudo pacman -Sq firefox links torbrowser-launcher
+sudo pacman -Sq firefox
 yay -Sq google-chrome
-sudo pamac install brave-browser
 
 ## Server tools
 sudo pacman -Sq remmina
@@ -125,24 +146,6 @@ yay -Sq insomnia
 sudo pacman -Sq docker docker-compose
 sudo systemctl start docker
 sudo systemctl enable docker
-
-# virtualbox
-sudo pacman -Sq virtualbox linux515-virtualbox-host-modules
-sudo vboxreload
-
-# vmware-workstation
-sudo pacman -S fuse2 gtkmm linux-headers pcsclite libcanberra
-yay -S --noconfirm --needed ncurses5-compat-libs
-yay -S --noconfirm --needed vmware-workstation
-sudo modprobe -a vmw_vmci vmmon
-
-sudo systemctl enable vmware-networks.service  vmware-usbarbitrator.service vmware-hostd.service
-sudo systemctl start vmware-networks.service  vmware-usbarbitrator.service vmware-hostd.service
-
-sudo pacman -S $(pacman -Qsq "^linux" | grep "^linux[0-9]*[-rt]*$" | awk '{print $1"-headers"}' ORS=' ')
-sudo vmware-modconfig --console --install-all
-
-
 
 
 
