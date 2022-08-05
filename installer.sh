@@ -84,10 +84,23 @@ yay -S gitflow
 # Databases --------------------------------------------------------------------------------
 
 ## postgresql
-sudo pacman -Sq postgresql pgadmin4
-sudo -u postgres -b 'initdb --locale $LANG -E UTF8 -D "/var/lib/postgres/data/"'
+sudo pacman -S postgresql
+sudo -iu postgres
+initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+exit
 sudo systemctl start postgresql.service
-sudo systemctl enable postgresql.service
+sudo systemctl enable --now postgresql.service
+
+## pgadmin
+sudo mkdir /var/lib/pgadmin
+sudo mkdir /var/log/pgadmin
+sudo chown $USER /var/lib/pgadmin
+sudo chown $USER /var/log/pgadmin
+python3 -m venv pgadmin4
+source pgadmin4/bin/activate
+pip install pgadmin4
+cd pgadmin4
+pgadmin4
 
 ## mongodb
 yay -Sq mongodb-bin mongodb-compass
