@@ -11,14 +11,14 @@ sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
 
 # aur
-sudo pacman -Sq yay pamac
+sudo pacman -Sq yay
 
 
 # General Solutions ------------------------------------------------------------------------
 
 ## daily assistances
 sudo pacman -Sq screenfetch gparted net-tools copyq htop appimagelauncher latte-dock
-yay -Sq translate-Sqhell http stacer powerline-fonts-git 
+yay -Sq translate-Sqhell http stacer powerline-fonts-git flameshot
 
 ## icon set
 wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="$HOME/.local/share/icons" sh
