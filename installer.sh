@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # Repositories -----------------------------------------------------------------------------
 
@@ -118,12 +118,24 @@ sudo pacman -Sq sqlite
 
 # Network ---------------------------------------------------------------------------------
 
+## netstat, ifconfig, arp, route, ...
+sudo pacman -S net-tools
+
+## dig, nslookup
+sudo pacman -Sy dnsutils
+
+## traceroute
+sudo pacman -S traceroute
+
+## Nmap
+sudo pacman -S nmap
+
 ## Wireshark: install and enable capture packets
 sudo pacman -S wireshark-qt
 sudo chmod +x /usr/bin/dumpcap
 
-## Nmap
-sudo pacman -S nmap
+
+# Security ---------------------------------------------------------------------------------
 
 # Uncomplicated FireWall: install, enable, add to startup
 sudo pamac install ufw 
